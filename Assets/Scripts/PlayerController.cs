@@ -44,6 +44,8 @@ public class PlayerController : MonoBehaviour
 
     private bool isDead = false;
 
+    public Transform spawnPos;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -140,12 +142,14 @@ public class PlayerController : MonoBehaviour
             //Jumping
             if (jumpBufferCount >= 0 && extraJumps > 0 && !(isGrounded || hangCounter > 0))
             {
+                FindObjectOfType<AudioManager>().Play("Player Jump");
                 rb.velocity = new Vector2(rb.velocity.x, extraJumpForce);
                 extraJumps--;
                 jumpBufferCount = 0;
             }
             else if (jumpBufferCount >= 0 && (isGrounded || hangCounter > 0))
             {
+                FindObjectOfType<AudioManager>().Play("Player Jump");
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 jumpBufferCount = 0;
             }
@@ -155,6 +159,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (canDash)
                 {
+                    FindObjectOfType<AudioManager>().Play("Player Dash");
                     animator.SetBool("isDashing", true);
                     isDashing = true;
                 }
@@ -192,13 +197,21 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(DieCoroutine());        
     }
 
+    public void Respawn()
+    {
+        transform.position = spawnPos.position;
+        rb.WakeUp();
+        animator.SetBool("isDead", false);
+        isDead = false;
+    }
+
     IEnumerator DieCoroutine()
     {
         rb.Sleep();
         isDead = true;
         animator.SetBool("isDead", true);
         yield return new WaitForSeconds(0.5f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Respawn();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -212,10 +225,23 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Spike"))
         {
+            FindObjectOfType<AudioManager>().Play("Player Spiked");
             Die();
-           
         }
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Checkpoint"))
+        {
+            if (!collision.gameObject.transform.Equals(spawnPos))
+            {
+                FindObjectOfType<AudioManager>().Play("Checkpoint");
+                spawnPos = collision.gameObject.transform;
+            }
+           
+        }
     }
 
     void OnDrawGizmosSelected()
