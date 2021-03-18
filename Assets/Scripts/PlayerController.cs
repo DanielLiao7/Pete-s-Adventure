@@ -201,6 +201,7 @@ public class PlayerController : MonoBehaviour
     {
         transform.position = spawnPos.position;
         rb.WakeUp();
+        rb.gravityScale = 5;
         animator.SetBool("isDead", false);
         isDead = false;
     }
@@ -209,6 +210,7 @@ public class PlayerController : MonoBehaviour
     {
         rb.velocity = Vector2.zero;
         rb.angularVelocity = 0;
+        rb.gravityScale = 0;
         rb.Sleep();
         isDead = true;
         animator.SetBool("isDead", true);
