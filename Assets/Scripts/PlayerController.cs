@@ -207,6 +207,8 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator DieCoroutine()
     {
+        rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0;
         rb.Sleep();
         isDead = true;
         animator.SetBool("isDead", true);
