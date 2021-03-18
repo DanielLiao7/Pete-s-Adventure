@@ -10,6 +10,17 @@ public class PlayerController : MonoBehaviour
     public float extraJumpForce;
     private float moveInput;
 
+    public float hangTime; //Short time to jump after walking off a surface
+    private float hangCounter;
+
+    public float jumpBufferLength; //Short Time to jump before hitting ground
+    private float jumpBufferCount;
+
+    public ParticleSystem footSteps;
+    private ParticleSystem.EmissionModule footEmission;
+    public ParticleSystem impactEffect;
+    private bool wasOnGround;
+
     private Rigidbody2D rb;
 
     private bool facingRight = true;
@@ -39,6 +50,8 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         extraJumps = numExtrajumps;
         dashTime = startDashTime;
+
+        footEmission = footSteps.emission;
     }
 
     // Update is called once per frame
@@ -67,6 +80,7 @@ public class PlayerController : MonoBehaviour
 
             if (isGrounded)
             {
+                hangCounter = hangTime;
                 animator.SetBool("isJumping", false);
                 extraJumps = numExtrajumps;
                 canDash = true;
@@ -74,6 +88,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 animator.SetBool("isJumping", true);
+                hangCounter -= Time.deltaTime;
             }
 
             //Horiz Movement
@@ -90,16 +105,49 @@ public class PlayerController : MonoBehaviour
             }
             rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
 
+            //Footstep Particle Effect
+            if (moveInput != 0 && isGrounded)
+            {
+                footEmission.rateOverTime = 25f;
+            }
+            else
+            {
+                footEmission.rateOverTime = 0f;
+            }
+
+            //Impact Effect
+            if(!wasOnGround && isGrounded)
+            {
+                impactEffect.gameObject.SetActive(true);
+                impactEffect.Stop();
+                impactEffect.transform.position = footSteps.transform.position;
+                impactEffect.Play();
+            }
+
+            wasOnGround = isGrounded;
+
+            //Jump Buffer
+            if (Input.GetKeyDown(KeyCode.Space)){
+                jumpBufferCount = jumpBufferLength;
+            }
+            else
+            {
+                jumpBufferCount -= Time.deltaTime;
+            }
+
+            
 
             //Jumping
-            if (Input.GetKeyDown(KeyCode.Space) && extraJumps > 0 && !isGrounded)
+            if (jumpBufferCount >= 0 && extraJumps > 0 && !(isGrounded || hangCounter > 0))
             {
                 rb.velocity = new Vector2(rb.velocity.x, extraJumpForce);
                 extraJumps--;
+                jumpBufferCount = 0;
             }
-            else if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+            else if (jumpBufferCount >= 0 && (isGrounded || hangCounter > 0))
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                jumpBufferCount = 0;
             }
 
             //Dashing
@@ -150,7 +198,7 @@ public class PlayerController : MonoBehaviour
         isDead = true;
         animator.SetBool("isDead", true);
         yield return new WaitForSeconds(0.5f);
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
