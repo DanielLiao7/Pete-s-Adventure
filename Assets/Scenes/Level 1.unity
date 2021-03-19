@@ -8575,25 +8575,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Player Jump
-    clip: {fileID: 8300000, guid: 3e6b370c3793b4046a78a02deb638af1, type: 3}
+    clip: {fileID: 8300000, guid: 66bc3b8a59846bd45aa8cc4dbe4c1508, type: 3}
     volume: 0.541
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Player Dash
-    clip: {fileID: 8300000, guid: d609f06921393d647ab168974730623b, type: 3}
+    clip: {fileID: 8300000, guid: 5d8fd02500b04ea418444012bc1561f7, type: 3}
     volume: 0.661
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Player Spiked
-    clip: {fileID: 8300000, guid: 3dd3933147af56d4c9ca8970d977b5e4, type: 3}
+    clip: {fileID: 8300000, guid: 47cf2e5fec9001f409ae0366b53537ec, type: 3}
     volume: 0.661
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Checkpoint
-    clip: {fileID: 8300000, guid: 31bd4601463f7df4599f686731633ea3, type: 3}
+    clip: {fileID: 8300000, guid: 738b3e2c05a66f040a1c70b408206b21, type: 3}
     volume: 0.661
     pitch: 1
     loop: 0
@@ -8840,7 +8840,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.776464, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
