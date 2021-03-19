@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -46,6 +47,8 @@ public class PlayerController : MonoBehaviour
 
     public Transform spawnPos;
 
+    public int coins;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -54,6 +57,7 @@ public class PlayerController : MonoBehaviour
         dashTime = startDashTime;
 
         footEmission = footSteps.emission;
+        coins = 0;
     }
 
     // Update is called once per frame
@@ -190,6 +194,23 @@ public class PlayerController : MonoBehaviour
         scaler.x *= -1;
         transform.localScale = scaler;
         
+    }
+
+    public void CollectCoin()
+    {
+        coins++;
+        if(coins == 1)
+        {
+            GameObject.Find("Coin1").GetComponent<Image>().color = new Color32(255, 255, 255, 255); 
+        }
+        else if (coins == 2)
+        {
+            GameObject.Find("Coin2").GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+        }
+        else if (coins == 3)
+        {
+            GameObject.Find("Coin3").GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+        }
     }
 
     public void Die()
