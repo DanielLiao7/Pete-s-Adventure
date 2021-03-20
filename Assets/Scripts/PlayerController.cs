@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
     public Transform spawnPos;
 
     public int coins;
+    public Transform levelEnd;
 
     // Start is called before the first frame update
     private void Start()
@@ -184,6 +185,12 @@ public class PlayerController : MonoBehaviour
                     dashTime = startDashTime;
                 }
             }
+
+            //Reach End of Level
+            if(transform.position.x >= levelEnd.position.x)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
         }
     }
 
@@ -220,9 +227,15 @@ public class PlayerController : MonoBehaviour
 
     public void Respawn()
     {
+        isDashing = false;
+        canDash = false;
+        dashTime = startDashTime;
         transform.position = spawnPos.position;
         rb.WakeUp();
+        rb.angularVelocity = 0;
+        rb.gravityScale = 0;
         rb.gravityScale = 4;
+        animator.SetBool("isDashing", false);
         animator.SetBool("isDead", false);
         isDead = false;
     }
