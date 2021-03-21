@@ -7381,7 +7381,7 @@ PrefabInstance:
     - target: {fileID: 7356990295234561792, guid: 1790898c0db940742865c490c16b4f41,
         type: 3}
       propertyPath: typingSpeed
-      value: 0.02
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 7356990295234561792, guid: 1790898c0db940742865c490c16b4f41,
         type: 3}
@@ -7580,7 +7580,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.398495, y: 3.1599982, z: -10}
+  m_LocalPosition: {x: -10.076788, y: 3.1599982, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -7937,7 +7937,7 @@ PrefabInstance:
     - target: {fileID: 7356990295234561792, guid: 1790898c0db940742865c490c16b4f41,
         type: 3}
       propertyPath: typingSpeed
-      value: 0.02
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 7356990295234561792, guid: 1790898c0db940742865c490c16b4f41,
         type: 3}
@@ -7988,7 +7988,7 @@ MonoBehaviour:
   text: {fileID: 1272231040}
   sentences:
   - Use SPACE to jump!
-  typingSpeed: 0.02
+  typingSpeed: 0.01
 --- !u!1 &763560849
 GameObject:
   m_ObjectHideFlags: 0
@@ -20431,7 +20431,7 @@ PrefabInstance:
     - target: {fileID: 7356990295234561792, guid: 1790898c0db940742865c490c16b4f41,
         type: 3}
       propertyPath: typingSpeed
-      value: 0.02
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 7356990295234561792, guid: 1790898c0db940742865c490c16b4f41,
         type: 3}
@@ -21515,7 +21515,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.4869976, y: 1}
+    m_SensorSize: {x: 1.7772108, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -26682,7 +26682,7 @@ PrefabInstance:
     - target: {fileID: 7356990295234561792, guid: 1790898c0db940742865c490c16b4f41,
         type: 3}
       propertyPath: typingSpeed
-      value: 0.02
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 7356990295234561792, guid: 1790898c0db940742865c490c16b4f41,
         type: 3}
@@ -26969,7 +26969,7 @@ PrefabInstance:
     - target: {fileID: 7356990295234561792, guid: 1790898c0db940742865c490c16b4f41,
         type: 3}
       propertyPath: typingSpeed
-      value: 0.02
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 7356990295234561792, guid: 1790898c0db940742865c490c16b4f41,
         type: 3}
