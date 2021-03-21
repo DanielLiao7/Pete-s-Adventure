@@ -28,6 +28,7 @@ public class Dialog : MonoBehaviour
     {
         if(index < sentences.Length - 1)
         {
+            StopAllCoroutines();
             index++;
             text.text = "";
             StartCoroutine(Type());

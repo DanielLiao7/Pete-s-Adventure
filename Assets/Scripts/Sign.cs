@@ -41,23 +41,20 @@ public class Sign : MonoBehaviour
                     
             }
         }
-        else
-        {
-            StartCoroutine(CloseText());
-        }
     }
 
     IEnumerator CloseText()
     {
         textBox.GetComponent<Animator>().SetTrigger("Close");
         yield return new WaitForSeconds(0.417f);
-        dialog.Clear();
         textBox.SetActive(false);
         opened = false;
     }
 
     IEnumerator OpenText()
     {
+        dialog.StopAllCoroutines();
+        dialog.Clear();
         textBox.SetActive(true);
         yield return new WaitForSeconds(0.417f);
         dialog.StartDiaglog();
@@ -78,6 +75,7 @@ public class Sign : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             speechBubble.GetComponent<SpriteRenderer>().enabled = false;
+            StartCoroutine(CloseText());
             touchingPlayer = false;
         }
     }

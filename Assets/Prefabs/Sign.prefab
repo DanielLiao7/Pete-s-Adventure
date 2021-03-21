@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3764366593719557657}
   - component: {fileID: 6354486041224072241}
   - component: {fileID: 8737911353317523152}
+  - component: {fileID: 7356990295234561792}
   m_Layer: 0
   m_Name: Sign
   m_TagString: Untagged
@@ -72,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: d364392200f12f24dab2a0ea029a4226, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -123,6 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speechBubble: {fileID: 3805856403759042772}
+  textBox: {fileID: 0}
 --- !u!50 &8737911353317523152
 Rigidbody2D:
   serializedVersion: 4
@@ -144,6 +146,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &7356990295234561792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3732121029885490018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2188b3de3ef1f14598a6fb681bba41c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 0}
+  sentences: []
+  typingSpeed: 0
 --- !u!1 &3805856403759042772
 GameObject:
   m_ObjectHideFlags: 0
