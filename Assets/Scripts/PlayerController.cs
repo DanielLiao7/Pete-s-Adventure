@@ -151,6 +151,10 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, extraJumpForce);
                 extraJumps--;
                 jumpBufferCount = 0;
+                impactEffect.gameObject.SetActive(true);
+                impactEffect.Stop();
+                impactEffect.transform.position = footSteps.transform.position;
+                impactEffect.Play();
             }
             else if (jumpBufferCount >= 0 && (isGrounded || hangCounter > 0))
             {
